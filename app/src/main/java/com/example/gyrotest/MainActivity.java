@@ -1,5 +1,7 @@
 package com.example.gyrotest;
 
+
+
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -22,6 +24,7 @@ import com.example.gyrotest.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private SensorManager sensorManager;
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private Sensor gyroscopeSensor;
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,12 +62,18 @@ public class MainActivity extends AppCompatActivity {
         gyroscopeSensorListener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent sensorEvent) {
+                TextView txt = findViewById(R.id.textview_first); //text in the first fragment
+                txt.setTextColor(Color.parseColor("#000000")); //black
+                txt.setTextSize(50);
                 if (sensorEvent.values[2] > 0.5f) { // anticlockwise
                     getWindow().getDecorView().setBackgroundColor(Color.parseColor("#00ffff")); //blue
+                    txt.setText("Going left");
                 } else if (sensorEvent.values[2] < -0.5f) { // clockwise
                     getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff0040")); //red
+                    txt.setText("Going right");
                 } else if (sensorEvent.values[2] == 0f) { //no movement, on flat surface
                     getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff00ff")); //pink
+                    txt.setText("Going nowhere");
                 }
             }
 
