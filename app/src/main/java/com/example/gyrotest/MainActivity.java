@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (sensorEvent.values[0] < -0.5f) { // clockwise
                     getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff0040")); //red
                 } else if (sensorEvent.values[0] == 0f) {
-                    getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ffffff")); //white
+                    getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff00ff")); //pink
                 }
             }
 
