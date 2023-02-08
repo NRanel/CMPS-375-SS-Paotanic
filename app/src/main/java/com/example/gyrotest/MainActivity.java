@@ -58,11 +58,11 @@ public class MainActivity extends AppCompatActivity {
         gyroscopeSensorListener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent sensorEvent) {
-                if (sensorEvent.values[0] > 0.5f) { // anticlockwise
+                if (sensorEvent.values[2] > 0.5f) { // anticlockwise
                     getWindow().getDecorView().setBackgroundColor(Color.parseColor("#00ffff")); //blue
-                } else if (sensorEvent.values[0] < -0.5f) { // clockwise
+                } else if (sensorEvent.values[2] < -0.5f) { // clockwise
                     getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff0040")); //red
-                } else if (sensorEvent.values[0] == 0f) {
+                } else if (sensorEvent.values[2] == 0f) { //no movement, on flat surface
                     getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff00ff")); //pink
                 }
             }
